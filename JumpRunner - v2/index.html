@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jumper Runner</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <div class="hero-left">
+        <p class="tag">VISIONLAB AI • SENAI</p>
+        <h1>JUMPER RUNNER</h1>
+        <p class="subtitle">
+          Um jogo 2D controlado por movimento, usando câmera, inteligência artificial e visão computacional
+          para transformar o corpo do jogador em controle.
+        </p>
+      </div>
+
+      <div class="status-card">
+        <span>Status da IA</span>
+        <strong id="aiStatus">Inicializando...</strong>
+      </div>
+    </header>
+
+    <section class="main-grid">
+      <section class="game-card">
+        <div class="card-header">
+          <div>
+            <h2>Modo jogo</h2>
+            <p>Use o corpo para pular ou pressione Espaço como plano B.</p>
+          </div>
+
+          <div class="badge">
+            IA + Câmera
+          </div>
+        </div>
+
+        <canvas id="gameCanvas" width="1000" height="460"></canvas>
+
+        <div class="controls-grid">
+          <div class="info-box">
+            <span>Pontuação</span>
+            <strong id="scoreText">0</strong>
+          </div>
+
+          <div class="info-box">
+            <span>Moedas</span>
+            <strong id="coinText">0</strong>
+          </div>
+
+          <div class="info-box command-box">
+            <span>Comando</span>
+            <strong id="commandText">Aguardando</strong>
+          </div>
+
+          <div class="select-box">
+            <label for="characterSelect">Personagem</label>
+            <select id="characterSelect">
+              <option value="lucas">Lucas aventureiro</option>
+              <option value="ana">Ana exploradora</option>
+              <option value="junino" selected>Caipirinha junino</option>
+              <option value="tech">Guardião tech</option>
+            </select>
+          </div>
+
+          <div class="select-box">
+            <label for="themeSelect">Cenário</label>
+            <select id="themeSelect">
+              <option value="day" selected>Vale ensolarado</option>
+              <option value="night">Noite mágica</option>
+              <option value="junina">Festa junina</option>
+            </select>
+          </div>
+
+          <div class="action-box">
+            <button id="calibrateBtn" class="btn btn-secondary" type="button">
+              Calibrar posição
+            </button>
+
+            <button id="startBtn" class="btn btn-primary" type="button">
+              Iniciar jogo
+            </button>
+          </div>
+        </div>
+        <div class="input-group">
+            <label>Dificuldade</label>
+            <select id="difficultySelect" class="input-select">
+              <option value="easy">Fácil (Para iniciantes)</option>
+              <option value="normal" selected>Normal</option>
+              <option value="hard">Difícil (Exige pulo alto)</option>
+            </select>
+          </div>
+          
+      </section>
+
+      <aside class="side-column">
+        <section class="camera-card">
+          <div class="card-header camera-head">
+            <div>
+              <h2>Câmera IA</h2>
+              <p>Detecção corporal em tempo real.</p>
+            </div>
+
+            <span class="live-dot"></span>
+          </div>
+
+         <div class="camera-box">
+            <video id="webcam" autoplay playsinline muted></video>
+            <canvas id="overlayCanvas" width="360" height="270"></canvas>
+          </div>
+
+          <button id="popOutCamBtn" class="btn btn-secondary" style="margin-top: 15px; width: 100%;">
+            Separar Câmera (2º Monitor)
+          </button>
+
+          <div class="instructions">
+            <h3>Como usar</h3>
+            <ol>
+              <li>Fique de corpo inteiro na frente da câmera.</li>
+              <li>Clique em <b>Calibrar posição</b> e fique parado por 2 segundos.</li>
+              <li>Clique em <b>Iniciar jogo</b>.</li>
+              <li>Pule para o personagem pular.</li>
+            </ol>
+
+            <p class="backup">
+              Plano B: aperte <b>Espaço</b> para pular.
+            </p>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
